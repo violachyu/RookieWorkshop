@@ -10,7 +10,7 @@ case/001
 username/001
 ## 限制條件
 - Must To Have  
-.NET Core 使用新版  
-RESTful API
+.NET Core
 - Nice To Have  
 TDD(Test-Driven Development)
+RESTful API
