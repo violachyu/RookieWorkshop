@@ -5,9 +5,7 @@
 One Week One Case 持續漸進
 ## 分支規則  
 - 案例  
-case/001
-- Developer  
-username/001
+case/README.md
 ## 限制條件
 - Must To Have  
 .NET Core
