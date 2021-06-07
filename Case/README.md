@@ -10,3 +10,7 @@ ex. http://localhost/api/data
 - [FizzBuzz](https://codingdojo.org/kata/FizzBuzz/)   
 呼叫 http://localhost/api/data/1 並回傳結果  
 不同參數應根據 FizzBuzz 邏輯回傳結果
+
+# Case 004
+- 針對 FizzBuzzService 寫單元測試(至少4個測項)  
+**限制條件** [xUnit](https://xunit.net/)
