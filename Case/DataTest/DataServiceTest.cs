@@ -15,20 +15,6 @@ namespace DataTest
         }
 
         [Fact]
-        public void FizzBuzz_15_Is_FizzBuzz()
-        {
-            // Arrange
-            int number = 15;
-            string expected = "FizzBuzz";
-
-            // Act
-            var actual = this._stubDataService.FizzBuzz(number);
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
         public void FizzBuzz_3_Is_Fizz()
         {
             // Arrange
@@ -57,12 +43,42 @@ namespace DataTest
         }
 
         [Fact]
+        public void FizzBuzz_15_Is_FizzBuzz()
+        {
+            // Arrange
+            int number = 15;
+            string expected = "FizzBuzz";
+
+            // Act
+            var actual = this._stubDataService.FizzBuzz(number);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public void FizzBuzz_number_Is_number()
         {
             // Arrange
             int number = 11;
             string expected = "11";
 
+            // Act
+            var actual = this._stubDataService.FizzBuzz(number);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+
+        // Inline Data Method
+        [Theory]
+        [InlineData(3, "Fizz")]
+        [InlineData(5, "Buzz")]
+        [InlineData(15, "FizzBuzz")]
+        [InlineData(11, "11")]
+        public void FizzBuzz_inlineData(int number, string expected)
+        {
             // Act
             var actual = this._stubDataService.FizzBuzz(number);
 
