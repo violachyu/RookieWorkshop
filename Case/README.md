@@ -14,3 +14,8 @@ ex. http://localhost/api/data
 # Case 004
 - 針對 FizzBuzzService 寫單元測試(至少4個測項)  
 **限制條件** [xUnit](https://xunit.net/)
+
+# Case 005
+- [FooBarQix](https://codingdojo.org/kata/FooBarQix/)
+- 建立 IDateService
+- 替換 FizzBuzzService 為 FooBarQixService
