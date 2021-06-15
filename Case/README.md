@@ -16,6 +16,6 @@ ex. http://localhost/api/data
 **限制條件** [xUnit](https://xunit.net/)
 
 # Case 005
-- [FooBarQix](https://codingdojo.org/kata/FooBarQix/)  
+- [FooBarQix](https://codingdojo.org/kata/FooBarQix/)(Step1)  
 建立 IDateService  
 替換 FizzBuzzService 為 FooBarQixService
