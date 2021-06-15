@@ -11,7 +11,7 @@ namespace DataTest
 
         public DataServiceTest()
         {
-            this._stubDataService = Substitute.For<IDataService>();
+            this._stubDataService = new DataService();
         }
 
         [Fact]
