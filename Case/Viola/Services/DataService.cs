@@ -7,6 +7,13 @@ namespace RookieWorkshop.Services
 {
     public class DataService : IDataService
     {
+        private IInputService _inputService;
+
+        public DataService(IInputService inputService)
+        {
+            this._inputService = inputService;
+        }
+
         public string FizzBuzz(int number)
         {
             var result = "";
@@ -33,6 +40,8 @@ namespace RookieWorkshop.Services
 
         public string FooBarQix(int number)
         {
+            number = this._inputService.GetValue(number);
+
             var result = string.Empty;
 
             if (number % 3 == 0 || number % 5 == 0 || number % 7 == 0)
@@ -75,6 +84,5 @@ namespace RookieWorkshop.Services
 
             return result;
         }
-
     }
 }

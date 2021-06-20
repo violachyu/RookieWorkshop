@@ -97,6 +97,15 @@ namespace DataTest
         
         public void FooBarQix_inlineData(int number, string expected)
         {
+            //Arrange
+            this._stubInputService.GetValue(6).Returns(6);
+            this._stubInputService.GetValue(10).Returns(10);
+            this._stubInputService.GetValue(14).Returns(14);
+            this._stubInputService.GetValue(3).Returns(3);
+            this._stubInputService.GetValue(5).Returns(5);
+            this._stubInputService.GetValue(7).Returns(7);
+            this._stubInputService.GetValue(11).Returns(11);
+
             // Act
             var actual = this._stubDataService.FooBarQix(number);
 

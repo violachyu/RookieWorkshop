@@ -17,11 +17,15 @@ namespace RookieWorkshop.Controllers
     {
         private IDataService _dataService;
 
+        private IInputService _inputService;
+
         public DataController(
-            IDataService dataService
+            IDataService dataService,
+            IInputService inputService
             )
         {
             this._dataService = dataService;
+            this._inputService = inputService;
         }
 
         // GET: api/<Data>
@@ -35,36 +39,11 @@ namespace RookieWorkshop.Controllers
 
         [HttpGet("FizzBuzz/{number}")]
         [Route("1")]
-        public string FizzBuzz(int number)
+        public string GetResult(int number)
         {
-            var result = this._dataService.FizzBuzz(number);
+            var result = this._dataService.FooBarQix(number);
 
             return result;
-        }
-
-        // GET api/<Data>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<Data>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<Data>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<Data>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
