@@ -85,5 +85,25 @@ namespace DataTest
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData(6, "Foo")]
+        [InlineData(10, "Bar")]
+        [InlineData(14, "Qix")]
+        [InlineData(3, "FooFoo")]
+        [InlineData(5, "BarBar")]
+        [InlineData(7, "QixQix")]
+        [InlineData(11, "11")]
+        
+        public void FooBarQix_inlineData(int number, string expected)
+        {
+            // Act
+            var actual = this._stubDataService.FooBarQix(number);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+
     }
 }

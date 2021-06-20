@@ -3,5 +3,7 @@
     public interface IDataService
     {
         string FizzBuzz(int number);
+
+        string FooBarQix(int number);
     }
 }
