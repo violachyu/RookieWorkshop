@@ -12,10 +12,18 @@ ex. http://localhost/api/data
 不同參數應根據 FizzBuzz 邏輯回傳結果
 
 # Case 004
-- 針對 FizzBuzzService 寫單元測試(至少4個測項)  
+- 針對 FizzBuzzService.GetResult(int input) 寫單元測試(至少4個測項)  
 **限制條件** [xUnit](https://xunit.net/)
 
 # Case 005
 - [FooBarQix](https://codingdojo.org/kata/FooBarQix/)(Step1)  
 建立 IDateService  
 替換 FizzBuzzService 為 FooBarQixService
+
+# Case 006
+- 新增 IInputService.GetValue(int max)  
+回傳 0 ~ max 整數
+- 調整 FooBarQixService.GetResult(int input)  
+input 必須先經由 IInputService.GetValue() 處理
+- 對 FooBarQixService 撰寫單元測試  
+**限制條件** [NSubstitute](https://nsubstitute.github.io/)
