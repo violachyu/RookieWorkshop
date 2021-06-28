@@ -8,10 +8,27 @@ namespace DataTest
     public class DataServiceTest
     {
         private IDataService _stubDataService;
+        private IInputService _stubInputService;
+
 
         public DataServiceTest()
         {
-            this._stubDataService = new DataService();
+            this._stubInputService = Substitute.For<IInputService>();
+            this._stubDataService = new DataService(_stubInputService);
+        }
+
+        [Fact]
+        public void FizzBuzz_15_Is_FizzBuzz()
+        {
+            // Arrange
+            int number = 15;
+            string expected = "FizzBuzz";
+
+            // Act
+            var actual = this._stubDataService.FizzBuzz(number);
+
+            // Assert
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
@@ -34,20 +51,6 @@ namespace DataTest
             // Arrange
             int number = 5;
             string expected = "Buzz";
-
-            // Act
-            var actual = this._stubDataService.FizzBuzz(number);
-
-            // Assert
-            Assert.Equal(expected, actual);
-        }
-
-        [Fact]
-        public void FizzBuzz_15_Is_FizzBuzz()
-        {
-            // Arrange
-            int number = 15;
-            string expected = "FizzBuzz";
 
             // Act
             var actual = this._stubDataService.FizzBuzz(number);
