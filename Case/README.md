@@ -27,3 +27,6 @@ ex. http://localhost/api/data
 input 必須先經由 IInputService.GetValue() 處理
 - 對 FooBarQixService 撰寫單元測試  
 **限制條件** [NSubstitute](https://nsubstitute.github.io/)
+
+# Case 007 - Autofac
+- Web Applicaiton 專案改以 Autofac 套件來進行 DI(Dependency Injection)
