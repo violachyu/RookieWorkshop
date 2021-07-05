@@ -30,3 +30,7 @@ input 必須先經由 IInputService.GetValue() 處理
 
 # Case 007 - Autofac
 - Web Applicaiton 專案改以 Autofac 套件來進行 DI(Dependency Injection)
+
+# Case 008 - FileCache
+- 新增 ICacheService.GetData()，以檔案的方式將讓資料有 5 Sec 的快取
+- 讓 FooBarQixService.GetResult() 使用 ICacheService 的快取特性
