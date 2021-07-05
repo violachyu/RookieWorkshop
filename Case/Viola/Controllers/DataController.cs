@@ -37,7 +37,7 @@ namespace RookieWorkshop.Controllers
             return new string[] { "Rookie", "Workshop" };
         }
 
-        [HttpGet("FizzBuzz/{number}")]
+        [HttpGet("GetResult/{number}")]
         [Route("1")]
         public string GetResult(int number)
         {
