@@ -19,13 +19,17 @@ namespace RookieWorkshop.Controllers
 
         private IInputService _inputService;
 
+        private ICacheService _cacheService;
+
         public DataController(
             IDataService dataService,
-            IInputService inputService
+            IInputService inputService,
+            ICacheService cacheService
             )
         {
             this._dataService = dataService;
             this._inputService = inputService;
+            this._cacheService = cacheService;
         }
 
         // GET: api/<Data>
@@ -41,6 +45,13 @@ namespace RookieWorkshop.Controllers
         [Route("1")]
         public string GetResult(int number)
         {
+            var cacheResult = this._cacheService.GetData(number);
+
+            if (cacheResult != null)
+            {
+                return cacheResult;
+            }
+
             var result = this._dataService.FooBarQix(number);
 
             return result;

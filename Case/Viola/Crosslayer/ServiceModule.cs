@@ -10,6 +10,8 @@ namespace RookieWorkshop.Crosslayer
         {
             builder.RegisterType<InputService>()
                    .As<IInputService>();
+            builder.RegisterType<CacheService>()
+                   .As<ICacheService>();
         }
     }
 }

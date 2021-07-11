@@ -37,6 +37,8 @@ namespace RookieWorkshop
             services.AddDbContext<BookContext>(o => o.UseSqlite("DataSource=books.db"));
             services.AddControllers();
             services.AddOptions();
+            services.AddMvc();
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

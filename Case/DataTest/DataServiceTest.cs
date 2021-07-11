@@ -9,6 +9,7 @@ namespace DataTest
     {
         private IDataService _stubDataService;
         private IInputService _stubInputService;
+        private ICacheService _stubCacheService;
 
 
         public DataServiceTest()
