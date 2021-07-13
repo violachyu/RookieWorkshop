@@ -34,3 +34,10 @@ input 必須先經由 IInputService.GetValue() 處理
 # Case 008 - FileCache
 - 新增 ICacheService.GetData()，以檔案的方式將讓資料有 5 Sec 的快取
 - 讓 FooBarQixService.GetResult() 使用 ICacheService 的快取特性
+
+# Case 009 - Redis
+- 改以 RedisCacheService 實作 ICacheService
+```
+# 以 docker 在本機啟用 redis server
+docker run --rm -p 6379:6379 redis
+```
