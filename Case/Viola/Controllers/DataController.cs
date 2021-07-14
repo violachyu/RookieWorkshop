@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using RookieWorkshop.Services;
+using Microsoft.Extensions.Caching.Memory;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,15 +22,19 @@ namespace RookieWorkshop.Controllers
 
         private ICacheService _cacheService;
 
+        private IMemoryCache _memoryCache;
+
         public DataController(
             IDataService dataService,
             IInputService inputService,
-            ICacheService cacheService
+            ICacheService cacheService,
+            IMemoryCache memoryCache
             )
         {
             this._dataService = dataService;
             this._inputService = inputService;
             this._cacheService = cacheService;
+            this._memoryCache = memoryCache;
         }
 
         // GET: api/<Data>
@@ -47,14 +52,19 @@ namespace RookieWorkshop.Controllers
         {
             var cacheResult = this._cacheService.GetData(number);
 
-            if (cacheResult != null)
+            if (cacheResult == null)
             {
-                return cacheResult;
+                var result = this._dataService.FooBarQix(number);
+
+                // Set CacheValue
+                var cacheEntryOptions = new MemoryCacheEntryOptions()
+                .SetSlidingExpiration(TimeSpan.FromSeconds(5));
+                this._memoryCache.Set("FooBarQix", result, cacheEntryOptions);
+
+                return result;
             }
 
-            var result = this._dataService.FooBarQix(number);
-
-            return result;
+            return cacheResult;
         }
     }
 }
