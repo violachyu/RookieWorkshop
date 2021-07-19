@@ -41,3 +41,29 @@ input 必須先經由 IInputService.GetValue() 處理
 # 以 docker 在本機啟用 redis server
 docker run --rm -p 6379:6379 redis
 ```
+
+# Case 010 - SqlServer
+- 建立 DataDB 資料庫
+- 建立 Data 資料表 Schema 如下
+  - Data_Id int **IDENTITY**
+  - Data_Input string
+  - Data_Result string
+- 建立 IDataRepository 存取 Data 資料表
+- 將 IDateService.GetResult() 的資料寫入 Data 資料表  
+**限制條件** 使用 Entity Framework Core
+```
+# 建立 Sql Server 容器(SA_PASSWORD 自行調整)
+docker run --name SqlServer -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+
+# 啟動 Sql Server 容器
+docker start SqlServer
+
+# 停止 Sql Server 容器
+docker stop SqlServer
+
+# 查詢容器
+docker ps -a
+
+# 刪除 Sql Server 容器
+docker rm SqlServer
+```
