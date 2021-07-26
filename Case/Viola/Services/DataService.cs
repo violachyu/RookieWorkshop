@@ -9,9 +9,15 @@ namespace RookieWorkshop.Services
     {
         private IInputService _inputService;
 
-        public DataService(IInputService inputService)
+        private ICacheService _cacheService;
+
+        public DataService(
+            IInputService inputService,
+            ICacheService cacheService
+            )
         {
             this._inputService = inputService;
+            this._cacheService = cacheService;
         }
 
         public string FizzBuzz(int number)
@@ -42,7 +48,12 @@ namespace RookieWorkshop.Services
         {
             number = this._inputService.GetValue(number);
 
-            var result = string.Empty;
+            var result = this._cacheService.GetData(number);
+            
+            if (string.IsNullOrEmpty(result) == false)
+            {
+                return result;
+            }
 
             if (number % 3 == 0 || number % 5 == 0 || number % 7 == 0)
             {
@@ -81,6 +92,8 @@ namespace RookieWorkshop.Services
             {
                 result = number.ToString();
             }
+
+            this._cacheService.SetData(number, result);
 
             return result;
         }
