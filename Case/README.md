@@ -67,3 +67,11 @@ docker ps -a
 # 刪除 Sql Server 容器
 docker rm SqlServer
 ```
+
+# Case 011 - AutoMapper
+- 建立 DataEntity
+  - Id
+  - Input
+  - Result
+- 建立 DataEntityMapperProfile : Profile 將 Data 轉換為 DataEntity  
+並將 Data_Result 轉為大寫
