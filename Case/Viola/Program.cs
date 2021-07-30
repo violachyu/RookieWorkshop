@@ -9,7 +9,6 @@ namespace RookieWorkshop
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("This is Rookie Workshop!");
             CreateHostBuilder(args).Build().Run();
         }
 

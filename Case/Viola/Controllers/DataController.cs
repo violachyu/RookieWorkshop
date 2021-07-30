@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
 using RookieWorkshop.Services;
-using Microsoft.Extensions.Caching.Memory;
-using StackExchange.Redis;
-using RookieWorkshop.DataAccess;
 using RookieWorkshop.Repositories;
 using RookieWorkshop.Entities;
 
@@ -55,7 +48,6 @@ namespace RookieWorkshop.Controllers
         [HttpGet("GetData/{number}")]
         public DataEntity GetData(int number)
         {
-            
             var result = this._dataRepository.GetData(number);
 
             return result;
