@@ -10,6 +10,7 @@ using Microsoft.Extensions.Caching.Memory;
 using StackExchange.Redis;
 using RookieWorkshop.DataAccess;
 using RookieWorkshop.Repositories;
+using RookieWorkshop.Entities;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -52,7 +53,7 @@ namespace RookieWorkshop.Controllers
         }
 
         [HttpGet("GetData/{number}")]
-        public Data GetData(int number)
+        public DataEntity GetData(int number)
         {
             
             var result = this._dataRepository.GetData(number);

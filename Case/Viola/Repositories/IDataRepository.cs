@@ -1,10 +1,11 @@
 ﻿using RookieWorkshop.DataAccess;
+using RookieWorkshop.Entities;
 
 namespace RookieWorkshop.Repositories
 {
     public interface IDataRepository
     {
-        Data GetData(int Id);
+        DataEntity GetData(int Id);
 
         void AddData(Data data);
 

@@ -32,6 +32,7 @@ namespace RookieWorkshop
             services.AddControllers();
             services.AddOptions();
             services.AddMvc();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

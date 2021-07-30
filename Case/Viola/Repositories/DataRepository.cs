@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using RookieWorkshop.DataAccess;
+using RookieWorkshop.Entities;
 
 namespace RookieWorkshop.Repositories
 {
@@ -10,14 +12,22 @@ namespace RookieWorkshop.Repositories
     {
         private readonly DataContext _context;
 
-        public DataRepository(DataContext context)
+        private readonly IMapper _mapper;
+
+        public DataRepository(
+            DataContext context,
+            IMapper mapper)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
+            this._mapper = mapper;
         }
 
-        public Data GetData(int Id)
+        public DataEntity GetData(int Id)
         {
-            return _context.Data.SingleOrDefault(a => a.Data_Id == Id);
+            var rawData = _context.Data.SingleOrDefault(a => a.Data_Id == Id);
+            var result = this._mapper.Map<DataEntity>(rawData);
+
+            return result;
         }
 
         public void AddData(Data data)
