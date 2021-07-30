@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using RookieWorkshop.DataAccess;
+using RookieWorkshop.Repositories;
 
 namespace RookieWorkshop.Services
 {
@@ -11,13 +13,17 @@ namespace RookieWorkshop.Services
 
         private ICacheService _cacheService;
 
+        private IDataRepository _dataRepository;
+
         public DataService(
             IInputService inputService,
-            ICacheService cacheService
+            ICacheService cacheService,
+            IDataRepository dataRepository
             )
         {
             this._inputService = inputService;
             this._cacheService = cacheService;
+            this._dataRepository = dataRepository;
         }
 
         public string FizzBuzz(int number)
@@ -94,6 +100,15 @@ namespace RookieWorkshop.Services
             }
 
             this._cacheService.SetData(number, result);
+
+            // Case010 - Insert Data into DB
+            var data = new Data()
+            {
+                Data_Input = number,
+                Data_Result = result
+            };
+
+            this._dataRepository.AddData(data);
 
             return result;
         }

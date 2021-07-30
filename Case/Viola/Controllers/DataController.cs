@@ -8,6 +8,8 @@ using System.Text.Json;
 using RookieWorkshop.Services;
 using Microsoft.Extensions.Caching.Memory;
 using StackExchange.Redis;
+using RookieWorkshop.DataAccess;
+using RookieWorkshop.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,11 +21,15 @@ namespace RookieWorkshop.Controllers
     {
         private IDataService _dataService;
 
+        private IDataRepository _dataRepository;
+
         public DataController(
-            IDataService dataService
+            IDataService dataService,
+            IDataRepository dataRepository
             )
         {
             this._dataService = dataService;
+            this._dataRepository = dataRepository;
         }
 
         // GET: api/<Data>
@@ -43,6 +49,22 @@ namespace RookieWorkshop.Controllers
             var result = this._dataService.FooBarQix(number);
 
             return result;
+        }
+
+        [HttpGet("GetData/{number}")]
+        public Data GetData(int number)
+        {
+            
+            var result = this._dataRepository.GetData(number);
+
+            return result;
+        }
+
+
+        [HttpGet("InsertData/{number}")]
+        public void InsertData(int number)
+        {
+            this._dataService.FooBarQix(number);
         }
     }
 }
